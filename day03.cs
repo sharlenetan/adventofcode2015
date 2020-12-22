@@ -8,34 +8,61 @@ namespace AdventOfCode2015
         static void Main()
         {
             string text = System.IO.File.ReadAllText(@"C:\Users\sharlenet\source\repos\AdventOfCode2015\WriteText.txt");
-            int x = 0, y = 0;
+            int santa_x = 0, santa_y = 0;
+            int robo_x = 0, robo_y = 0;
+            bool santa = true;
             List<(int, int)> list = new List<(int, int)>();
-            list.Add((x, y));
+            list.Add((0, 0));
 
             foreach (char c in text)
             {
-                switch(c)
+                if (santa)
                 {
-                    case '^':
-                        y++;
-                        break;
-                    case '>':
-                        x++;
-                        break;
-                    case 'v':
-                        y--;
-                        break;
-                    case '<':
-                        x--;
-                        break;
+                    switch (c)
+                    {
+                        case '^':
+                            santa_y++;
+                            break;
+                        case '>':
+                            santa_x++;
+                            break;
+                        case 'v':
+                            santa_y--;
+                            break;
+                        case '<':
+                            santa_x--;
+                            break;
+                    }
+                    if (!list.Contains((santa_x, santa_y)))
+                    {
+                        list.Add((santa_x, santa_y));
+                    }
+                    santa = false;
                 }
-                
-                if (!list.Contains((x, y)))
+                else
                 {
-                    list.Add((x, y));
+                    switch (c)
+                    {
+                        case '^':
+                            robo_y++;
+                            break;
+                        case '>':
+                            robo_x++;
+                            break;
+                        case 'v':
+                            robo_y--;
+                            break;
+                        case '<':
+                            robo_x--;
+                            break;
+                    }
+                    if (!list.Contains((robo_x, robo_y)))
+                    {
+                        list.Add((robo_x, robo_y));
+                    }
+                    santa = true;
                 }
             }
-            
             Console.WriteLine("House count: " + list.Count);
         }
     }
