@@ -20,7 +20,7 @@ namespace AdventOfCode2015
                 if (output.Substring(0,6) == "000000")
                 {
                     found = true;
-                    Console.WriteLine(n); // lowest positive number that produces hash beginning with "00000"
+                    Console.WriteLine(n); // lowest positive number that produces hash beginning with six zeroes
                 }
                 n++;
             }
