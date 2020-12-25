@@ -17,7 +17,7 @@ namespace AdventOfCode2015
             {
                 string input_n = input + n.ToString();
                 string output = CreateMD5(input_n);
-                if (output.Substring(0,5) == "00000")
+                if (output.Substring(0,6) == "000000")
                 {
                     found = true;
                     Console.WriteLine(n); // lowest positive number that produces hash beginning with "00000"
@@ -26,7 +26,7 @@ namespace AdventOfCode2015
             }
         }
         
-		//CreateMD5 code taken from stackoverflow.com
+	//CreateMD5 code taken from stackoverflow.com
         public static string CreateMD5(string input)
         {
             // Use input string to calculate MD5 hash
