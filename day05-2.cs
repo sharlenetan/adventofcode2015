@@ -1,4 +1,5 @@
 using System;
+using System.Text.RegularExpressions;
 
 namespace AdventOfCode2015
 {
@@ -23,37 +24,20 @@ namespace AdventOfCode2015
 
         public static bool TwoLettersTwice(string input)
         {
-            bool twice = false;
-            string pair, remainder;
-            int i = 0;
-
-            while ((i < (input.Length - 3)) && !twice)
-            {
-                pair = input.Substring(i, 2);
-                remainder = input.Remove(i, 2);
-                if (remainder.Contains(pair))
-                {
-                    twice = true;
-                }
-                i++;
-            }
-            return twice;
+            var matches = Regex.Matches(input, @"([a-z][a-z]).*\1");
+            if (matches.Count > 0)
+                return true;
+            else
+                return false;
         }
 
         public static bool RepeatLetter(string input)
         {
-            bool repeat = false;
-            int n = 0;
-
-            while ((n < (input.Length - 2)) && !repeat)
-            {
-                if (input[n] == input[n + 2])
-                {
-                    repeat = true;
-                }
-                n++;
-            }
-            return repeat;
+            var matches = Regex.Matches(input, @"(.).\1");
+            if (matches.Count > 0)
+                return true;
+            else
+                return false;
         }
     }
 }
