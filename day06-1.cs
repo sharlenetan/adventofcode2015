@@ -24,15 +24,15 @@ namespace AdventOfCode2015
             foreach (string line in lines)
             {
                 Match instruction = Regex.Match(line, @"(\D*)");
-                string action = instruction.Value;
+                string action = instruction.Value; // read in action and convert it to a string
                 MatchCollection digits = Regex.Matches(line, @"(\d+)");
                 string[] strArray = new string[digits.Count];
                 
                 for (int n = 0; n < digits.Count; n++)
                 {
-                    strArray[n] = digits[n].Groups[0].Value;
+                    strArray[n] = digits[n].Groups[0].Value; // read in numbers as strings
                 }
-                
+                //Convert numbers from string to int
                 start_x = int.Parse(strArray[0]);
                 start_y = int.Parse(strArray[1]);
                 end_x = int.Parse(strArray[2]);
